@@ -1,14 +1,37 @@
 <!--index.wxml-->
+<view>猪八戒</view>
+
 <my-cpn></my-cpn>
-<view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
-  </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>
-</view>
+<my-cpn></my-cpn>
+<my-style></my-style>
+
+<my-prop title="哈哈哈" titleClass="red"></my-prop>
+<my-prop title="呵呵呵" titleClass="green"></my-prop>
+<my-prop title="嘿嘿嘿"></my-prop>
+
+<!-- 组件内部发出事件 -->
+<view>当前计数{{counter}}</view>
+<my-event bind:increment="handleIncrement"></my-event>
+
+<w-tab-control title="{{['衣服', '鞋子', '裤子']}}" bind:itemClick="itemClick"></w-tab-control>
+
+<!-- 直接选中组件修改数据/调用方法 -->
+<button bind:tap="handleIncrementCpn">修改组件内的数据</button>
+<my-sel class="sel-class" id="sel-id"></my-sel>
+
+<!-- 单个插槽的使用 -->
+<my-slot>
+  <view>我是插入的内容</view>
+</my-slot>
+
+<my-slot>
+  <slider value="60"></slider>
+</my-slot>
+
+<!-- 多个插槽的使用 -->
+<!-- 1.注意: 给每一个插槽起一个名字 -->
+<!-- 2.必须在Components对象中添加一个选项: options -->
+<my-mslot>
+  <button slot="slot2">我是插槽的内容</button>
+  <button slot="slot1">我是插槽的内容1</button>
+</my-mslot>
